@@ -5,7 +5,9 @@ using TFinal.Models;
 
 namespace TFinal.Controllers
 {
-    public class LogForma_PagoController : Controller
+    [Route("api/LogForma_PagoController")]
+    [ApiController]
+    public class LogForma_PagoController : ControllerBase
     {
         private readonly InmuebleContext _context;
         public LogForma_PagoController(InmuebleContext context)

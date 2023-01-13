@@ -5,7 +5,9 @@ using TFinal.Models;
 
 namespace TFinal.Controllers
 {
-    public class LogClienteController : Controller
+    [Route("api/LogClienteController")]
+    [ApiController]
+    public class LogClienteController : ControllerBase
     {
         private readonly InmuebleContext _context;
         public LogClienteController(InmuebleContext context)
@@ -14,13 +16,13 @@ namespace TFinal.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Cliente>>> GetVenta()
+        public async Task<ActionResult<IEnumerable<Cliente>>> GetCliente()
         {
             return await _context.Clientes.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Cliente>> GetVenta(int? id)
+        public async Task<ActionResult<Cliente>> GetCliente(int? id)
         {
             if (id == null || _context.Clientes == null)
             {

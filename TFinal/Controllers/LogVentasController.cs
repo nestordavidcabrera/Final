@@ -5,7 +5,9 @@ using TFinal.Models;
 
 namespace TFinal.Controllers
 {
-    public class LogVentasController : Controller
+    [Route("api/LogVentasController")]
+    [ApiController]
+    public class LogVentasController : ControllerBase
     {
         private readonly InmuebleContext _context;
         public LogVentasController(InmuebleContext context)

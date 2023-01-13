@@ -5,7 +5,7 @@ using TFinal.Models;
 
 namespace TFinal.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/LogTipo_InmuebleController")]
     [ApiController]
     public class LogTipo_InmuebleController : ControllerBase
     {
