@@ -70,6 +70,18 @@ namespace TFinal.Controllers
             await _context.SaveChangesAsync();
             return CreatedAtAction("GetInmueble", new { id = inmueble.id_inmueble }, inmueble);
         }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Inmueble>> DeleteInmueble(int id)
+        {
+            var inmueble = await _context.Inmuebles.FindAsync(id);
+            if (inmueble == null)
+            {
+                return NotFound();
+            }
+            _context.Inmuebles.Remove(inmueble);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
         private bool InmuebleExist(int id)
         {
             return _context.Inmuebles.Any(e => e.id_inmueble == id);

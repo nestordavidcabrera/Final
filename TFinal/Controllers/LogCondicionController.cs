@@ -70,6 +70,18 @@ namespace TFinal.Controllers
             await _context.SaveChangesAsync();
             return CreatedAtAction("GetCondicion", new { id = condicion.id_condicion }, condicion);
         }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Condicion>> DeleteCondicion(int id)
+        {
+            var condicion = await _context.Condiciones.FindAsync(id);
+            if (condicion == null)
+            {
+                return NotFound();
+            }
+            _context.Condiciones.Remove(condicion);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
         private bool CondicionExist(int id)
         {
             return _context.Condiciones.Any(e => e.id_condicion == id);

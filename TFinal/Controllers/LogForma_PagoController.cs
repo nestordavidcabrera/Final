@@ -70,6 +70,18 @@ namespace TFinal.Controllers
             await _context.SaveChangesAsync();
             return CreatedAtAction("GetForma_Pago", new { id = forma_pago.id_forma_pago }, forma_pago);
         }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Forma_Pago>> DeleteForma_Pago(int id)
+        {
+            var forma_pago = await _context.FormaPagos.FindAsync(id);
+            if (forma_pago == null)
+            {
+                return NotFound();
+            }
+            _context.FormaPagos.Remove(forma_pago);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
         private bool FormaPagoExist(int id)
         {
             return _context.FormaPagos.Any(e => e.id_forma_pago == id);
